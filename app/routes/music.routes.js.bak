@@ -25,7 +25,6 @@ module.exports = app => {
 
 	// Delete all music, clear database
 	app.delete("/music", music.deleteAll);
-
 };
 
 /**

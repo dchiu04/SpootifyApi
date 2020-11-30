@@ -29,6 +29,6 @@ module.exports = app => {
 
 /**
 Missing End points (4):
-- 2 POSTS (one of them should create many music objects to be sent)
+- 2 POSTS (one of them should upload image for album cover)
 - 2 more of any type
 */

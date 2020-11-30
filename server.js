@@ -17,7 +17,8 @@ app.get("/", (req, res) => {
 require("./app/routes/music.routes.js")(app);
 
 // set port, listen for requests
-app.listen(process.env.PORT || 3000, () => {
-	
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
   console.log("Server is running on port 3000.");
 });

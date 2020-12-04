@@ -21,13 +21,13 @@ User.create = (newUser, result) => {
 
 //this should be in a stored procedure
 // addFavourite
-User.addFavourite = (artist, song_name, result) => {
-   // sql.query(`SELECT id FROM music_entries WHERE artist = ${artist} AND song_name = ${song_name}`, (err, res) => { //get rid of song + artist name 
-        sql.query(`CALL addFavourite(${artist}, ${song_name})`, (err, data, _) => {
-            
-        })
-    })
-}
+// User.addFavourite = (artist, song_name, result) => {
+//    // sql.query(`SELECT id FROM music_entries WHERE artist = ${artist} AND song_name = ${song_name}`, (err, res) => { //get rid of song + artist name 
+//         sql.query(`CALL addFavourite(${artist}, ${song_name})`, (err, data, _) => {
+
+//         })
+//     })
+// }
 
 //how to get user's id with just the username?
 User.getFavourites = (user_name, result) => {

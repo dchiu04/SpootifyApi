@@ -11,7 +11,7 @@ const Music = function(music) {
 
 //create
 Music.create = (newMusic, result) => {
-  sql.query("INSERT INTO music SET ?", newMusic, (err, res) => {
+  sql.query("INSERT INTO music_entries SET ?", newMusic, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -24,7 +24,7 @@ Music.create = (newMusic, result) => {
 
 //findByArtistName
 Music.findByArtistName = (artist, result) => {
-  sql.query(`SELECT * FROM music WHERE artist = '${artist}'`, (err, res) => {
+  sql.query(`SELECT * FROM music_entries_entries WHERE artist = '${artist}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -43,7 +43,7 @@ Music.findByArtistName = (artist, result) => {
 
 //findBySongName
 Music.findBySongName = (song_name, result) => {
-  sql.query(`SELECT * FROM music WHERE song_name = '${song_name}'`, (err, res) => {
+  sql.query(`SELECT * FROM music_entries WHERE song_name = '${song_name}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -62,7 +62,7 @@ Music.findBySongName = (song_name, result) => {
 
 //findByArtistSongName
 Music.findByArtistSongName = (artist, song_name, result) => {
-  sql.query(`SELECT * FROM music WHERE artist = '${artist}' AND song_name = '${song_name}'`, (err, res) => {
+  sql.query(`SELECT * FROM music_entries WHERE artist = '${artist}' AND song_name = '${song_name}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -81,7 +81,7 @@ Music.findByArtistSongName = (artist, song_name, result) => {
 
 //getAll
 Music.getAll = result => {
-  sql.query("SELECT * FROM music", (err, res) => {
+  sql.query("SELECT * FROM music_entries", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -96,7 +96,7 @@ Music.getAll = result => {
 //Update
 Music.update = (artist, song_name, m, result) => {
   sql.query(
-    `UPDATE music SET artist = ?, song_name = ?, genre = ?, album = ?, year = ? WHERE artist = '${artist}' AND song_name = '${song_name}'`,
+    `UPDATE music_entries SET artist = ?, song_name = ?, genre = ?, album = ?, year = ? WHERE artist = '${artist}' AND song_name = '${song_name}'`,
     [m.artist, m.song_name, m.genre, m.album, m.year],
     (err, res) => {
       if (err) {
@@ -118,7 +118,7 @@ Music.update = (artist, song_name, m, result) => {
 
 //removeSong
 Music.removeSong = (artist, song_name, result) => {
-  sql.query(`DELETE FROM music WHERE artist = '${artist}' AND song_name = '${song_name}'`, (err, res) => {
+  sql.query(`DELETE FROM music_entries WHERE artist = '${artist}' AND song_name = '${song_name}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -138,7 +138,7 @@ Music.removeSong = (artist, song_name, result) => {
 
 //removeArtist
 Music.removeArtist = (artist, result) => {
-	sql.query(`DELETE FROM music WHERE artist = '${artist}'`, (err, res) => {
+	sql.query(`DELETE FROM music_entries WHERE artist = '${artist}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -158,7 +158,7 @@ Music.removeArtist = (artist, result) => {
 };
 
 Music.removeAll = result => {
-  sql.query("DELETE FROM music", (err, res) => {
+  sql.query("DELETE FROM music_entries", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

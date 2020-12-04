@@ -8,7 +8,7 @@ exports.create = (req, res) => {
       message: "Content can not be empty!"
     });
   }
-
+  
   // Create a Music
   const music = new Music({
     artist: req.body.artist,
@@ -27,7 +27,7 @@ exports.create = (req, res) => {
       });
     else res.send(data);
   });
-};
+}
 
 // Retrieve all Musics from the database.
 exports.findAll = (req, res) => {
@@ -157,13 +157,13 @@ exports.deleteAllByArtist = (req, res) => {
 };
 
 // Delete all Musics from the database.
-exports.deleteAll = (req, res) => {
-  Music.removeAll((err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all Musics."
-      });
-    else res.send({ message: `All Musics were deleted successfully!` });
-  });
-};
+// exports.deleteAll = (req, res) => {
+//   Music.removeAll((err, data) => {
+//     if (err)
+//       res.status(500).send({
+//         message:
+//           err.message || "Some error occurred while removing all Musics."
+//       });
+//     else res.send({ message: `All Musics were deleted successfully!` });
+//   });
+// };

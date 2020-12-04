@@ -12,6 +12,7 @@ const Music = function(music) {
 //create
 Music.create = (newMusic, result) => {
   sql.query("INSERT INTO music_entries SET ?", newMusic, (err, res) => {
+   // sql.query(`INSERT IGNORE INTO music_entries VALUES(${newMusic.id},${newMusic.song_name},${newMusic.artist},${newMusic.genre},${newMusic.year},${newMusic.album})`,(err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

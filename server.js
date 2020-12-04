@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/music.routes.js")(app);
+require("./app/routes/user.routes.js")(app);
 
 // set port, listen for requests
 const port = process.env.PORT || 3000;

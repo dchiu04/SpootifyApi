@@ -43,15 +43,15 @@ exports.findAll = (req, res) => {
 
 // Find all Music with the same song name
 exports.findSong = (req, res) => {
-  Music.findBySongName(req.params.artist, req.params.song_name, (err, data) => {
+  Music.findBySongName(req.query.song_name, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Music with artist ${req.params.song_name}.`
+          message: `Not found Music with artist ${req.query.song_name}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Music with artist " + req.params.song_name
+          message: "Error retrieving Music with artist " + req.query.song_name
         });
       }
     } else res.send(data);
@@ -64,11 +64,11 @@ exports.findSongByArtist = (req, res) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Music with artist ${req.params.song_name}.`
+          message: `Not found ${req.params.song_name}` + ` with artist ${req.params.artist}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Music with artist " + req.params.song_name
+          message: `Error retrieving ${req.params.song_name} with artist ${req.params.artist}`
         });
       }
     } else res.send(data);

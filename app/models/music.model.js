@@ -18,7 +18,7 @@ Music.create = (newMusic, result) => {
       return;
     }
     console.log("created music: ", { id: res.insertId, ...newMusic });
-    result(null, { id: res.insertId, ...newMusic }); //not sure about this
+    result(null, { id: res.insertId, ...newMusic });
   });
 };
 
@@ -41,8 +41,8 @@ Music.findByArtistName = (artist, result) => {
   });
 };
 
-//findBySongName
-Music.findBySongName = (artist, song_name, result) => {
+//findByArtistSongName
+Music.findByArtistSongName = (artist, song_name, result) => {
   sql.query(`SELECT * FROM music WHERE artist = '${artist}' AND song_name = '${song_name}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -74,7 +74,7 @@ Music.getAll = result => {
   });
 };
 
-//Update, not working
+//Update
 Music.update = (artist, song_name, m, result) => {
   sql.query(
     `UPDATE music SET artist = ?, song_name = ?, genre = ?, album = ?, year = ? WHERE artist = '${artist}' AND song_name = '${song_name}'`,

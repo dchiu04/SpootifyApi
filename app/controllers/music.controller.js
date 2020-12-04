@@ -42,7 +42,6 @@ exports.findAll = (req, res) => {
 };
 
 // Find all Music with the same song name
-
 exports.findSong = (req, res) => {
   Music.findBySongName(req.params.artist, req.params.song_name, (err, data) => {
     if (err) {
@@ -58,6 +57,24 @@ exports.findSong = (req, res) => {
     } else res.send(data);
   });
 };
+
+// Find all Music with the same song name and artist
+exports.findSongByArtist = (req, res) => {
+  Music.findByArtistSongName(req.params.artist, req.params.song_name, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Music with artist ${req.params.song_name}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Music with artist " + req.params.song_name
+        });
+      }
+    } else res.send(data);
+  });
+};
+
 
 
 // Find all Music with by the same artist
@@ -77,7 +94,7 @@ exports.findAllByArtist = (req, res) => {
   });
 };
 
-// Update a Music identified by the artist in the request
+// Update a Music identified by the artist and song name in the request
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {
@@ -123,7 +140,7 @@ exports.deleteSongByArtist = (req, res) => {
   });
 };
 
-// Delete a Music with the specified artist in the request
+// Delete Music with the specified artist in the request
 exports.deleteAllByArtist = (req, res) => {
   Music.removeArtist(req.params.artist, (err, data) => {
     if (err) {
@@ -139,8 +156,6 @@ exports.deleteAllByArtist = (req, res) => {
     } else res.send({ message: `All music by the artist was deleted successfully!` });
   });
 };
-
-
 
 // Delete all Musics from the database.
 exports.deleteAll = (req, res) => {

@@ -41,6 +41,25 @@ Music.findByArtistName = (artist, result) => {
   });
 };
 
+//findBySongName
+Music.findBySongName = (song_name, result) => {
+  sql.query(`SELECT * FROM music WHERE song_name = '${song_name}'`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("found song(s): ", res);
+      result(null, res);
+      return;
+    }
+
+    result({ kind: "not_found" }, null);
+  });
+};
+
 //findByArtistSongName
 Music.findByArtistSongName = (artist, song_name, result) => {
   sql.query(`SELECT * FROM music WHERE artist = '${artist}' AND song_name = '${song_name}'`, (err, res) => {

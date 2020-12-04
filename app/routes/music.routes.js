@@ -6,19 +6,19 @@ module.exports = app => {
 	app.post("/music", music.create);
 
 	// Retrieve all Music
-	//app.get("/music", music.findAll);
+	app.get("/music", music.findAll);
 	
 	//Retrives all songs with the same name
-	app.get("/music/:song", music.findSong);
+	app.get("/music/song/:song_name", music.findSong);
 
 	// Retrieve all Music by artist
-	//app.get("/music/:artist", music.findAllByArtist);
+	app.get("/music/artist/:artist", music.findAllByArtist);
 	
 	// Retrieves song with the same song name and artist
-	app.get("/music/:artist/:song_name", music.findSongByArtist);
+	app.get("/music/song/:artist/:song_name", music.findSongByArtist);
 
-	// Updates any/all music attributes by artist and song name
-	app.put("/music/:artist/:song_name", music.update);
+	// Updates specific song by artist and song name
+	app.put("/music/song/:artist/:song_name", music.update);
 	
 	// Delete a Music entry with artist and song name
 	app.delete("/music/:artist/:song_name", music.deleteSongByArtist);
@@ -31,9 +31,9 @@ module.exports = app => {
 };
 
 /**
-Missing End points (4):
+Missing End points (3):
 - 2 POSTS (one of them should upload image for album cover)
-- 2 more of any type
+- 1 more of any type
 */
 /** Album cover img upload:
 - requires artist and song name and album

@@ -55,7 +55,7 @@ Music.findBySongName = (song_name, result) => {
       result(null, res);
       return;
     }
-
+    console.log(res);
     result({ kind: "not_found" }, null);
   });
 };

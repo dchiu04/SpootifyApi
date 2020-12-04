@@ -43,16 +43,16 @@ exports.findAll = (req, res) => {
 
 // Find all Music with the same song name
 exports.findSong = (req, res) => {
-  let song_name = req.query.song_name;
+  let song_name = req.params.song_name;
   Music.findBySongName(song_name, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Music with artist ${req.query.song_name}.`
+          message: `Not found Music with song ${song_name}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Music with artist " + req.query.song_name
+          message: `Error retrieving Music with song ${song_name}`
         });
       }
     } else res.send(data);
@@ -75,8 +75,6 @@ exports.findSongByArtist = (req, res) => {
     } else res.send(data);
   });
 };
-
-
 
 // Find all Music with by the same artist
 exports.findAllByArtist = (req, res) => {
@@ -106,7 +104,7 @@ exports.update = (req, res) => {
 
   Music.update(
     req.params.artist,
-	req.params.song_name,
+  	req.params.song_name,
     new Music(req.body),
     (err, data) => {
       if (err) {

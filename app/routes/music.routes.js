@@ -6,10 +6,10 @@ module.exports = app => {
 	app.post("/music", music.create);
 
 	// Retrieve all Music
-	app.get("/music", music.findAll);
+	//app.get("/music", music.findAll);
 	
 	//Retrives all songs with the same name
-	app.get("/music/:song", music.findSong)
+	app.get("/music/:song", music.findSong);
 
 	// Retrieve all Music by artist
 	//app.get("/music/:artist", music.findAllByArtist);

@@ -43,8 +43,8 @@ exports.findAll = (req, res) => {
 
 // Find all Music with the same song name
 exports.findSong = (req, res) => {
-  console.log("hi");
-  Music.findBySongName(req.query.song_name, (err, data) => {
+  let song_name = req.query.song_name;
+  Music.findBySongName(song_name, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({

@@ -29,6 +29,26 @@ exports.create = (req, res) => {
   });
 }
 
+// Album cover upload
+exports.createAlbum = (req, res) => {
+  // Validate request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  
+  // Save Music in the database
+  Music.createAlbum((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while uploading the album cover."
+      });
+    else res.send(data);
+  });
+}
+
 // Retrieve all Musics from the database.
 exports.findAll = (req, res) => {
   Music.getAll((err, data) => {

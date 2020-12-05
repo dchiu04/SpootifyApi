@@ -1,5 +1,31 @@
 module.exports = app => {
-  const music = require("../controllers/music.controller.js");
+  	const music = require("../controllers/music.controller.js");
+	var multer = require('multer')
+	const ejs = require('ejs');
+	const path = require('path');
+	const express = require("express");
+	// EJS
+app.set('view engine', 'ejs');
+
+// Public Folder
+//app.use(express.static('./public'));
+
+	// Set The Storage Engine
+const storage = multer.diskStorage({
+	destination: './public/uploads/',
+	filename: function(req, file, cb){
+	  cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+	}
+  });
+  
+	// Init Upload
+const upload = multer({	
+	storage: storage,
+	limits:{fileSize: 1000000},
+	fileFilter: function(req, file, cb){
+	  checkFileType(file, cb);
+	}
+  }).single('album_cover');
 
 //WORKS:
 	//1. Create a new Music 
@@ -28,5 +54,16 @@ module.exports = app => {
 
 //IN PROGRESS:
 	//2. Create a new album cover
-	//app.post("/music", music.createAlbum);
+	app.post("/music/album", function(req, res) {
+		upload(req, res, function(err) {
+			if (err instanceof multer.MulterError) {
+				console.log("Multer error");
+			} else if (err) {
+				console.log("Diff error", err);
+			}
+			//everything is fine
+			//messsage = {""}
+			console.log("it went through");
+		})
+	})
 };

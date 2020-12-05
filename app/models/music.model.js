@@ -1,4 +1,6 @@
 const sql = require("./db.js");
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
 
 // Constructor
 const Music = function(music) {
@@ -23,9 +25,15 @@ Music.create = (newMusic, result) => {
   });
 };
 
+//create album
+Music.createAlbum = (result) => {
+  console.log("Result:", result);
+};
+
+
 //findByArtistName
 Music.findByArtistName = (artist, result) => {
-  sql.query(`SELECT * FROM music_entries_entries WHERE artist = '${artist}'`, (err, res) => {
+  sql.query(`SELECT * FROM music_entries WHERE artist = '${artist}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

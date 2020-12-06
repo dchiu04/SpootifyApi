@@ -1,0 +1,705 @@
+<!doctype html>
+<html>
+  <head>
+    <title>defaultTitle</title>
+    <style type="text/css">
+      body {
+        background-color: lightblue;
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+#desc {
+  text-align: center;
+}
+
+  </style>
+  </head>
+  <body>
+    <div id="desc">
+  <h1 style>Spootify API</h1>
+    <div class="app-desc">Spootify API is a web api that allows users to add and favourite music.</div>
+    <div class="app-desc">Version: 0.1</div>
+    <div class="app-desc">URL: <a href="https://dry-sea-70637.herokuapp.com/">https://dry-sea-70637.herokuapp.com/</a></div>
+  </div>
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Default">Default</a></h4>
+  <ul>
+  <li><a href="#musicGet"><code><span class="http-method">get</span> /music</code></a></li>
+  <li><a href="#musicJustinBieberLonelyDelete"><code><span class="http-method">delete</span> /music/{param0}/{param1}</code></a></li>
+  <li><a href="#musicParam0Param1Get"><code><span class="http-method">get</span> /music/{param0}/{param1}</code></a></li>
+  <li><a href="#musicPost"><code><span class="http-method">post</span> /music</code></a></li>
+  <li><a href="#musicSongJustinBieberForeverPut"><code><span class="http-method">put</span> /music/song/{param0}/{param1}</code></a></li>
+  <li><a href="#musicSongJustinBieberHabitualGet"><code><span class="http-method">get</span> /music/song/{param0}/{param1}</code></a></li>
+  <li><a href="#userNinaGet"><code><span class="http-method">get</span> /user/{param0}</code></a></li>
+  <li><a href="#userNinaJustinBieberHabitualDelete"><code><span class="http-method">delete</span> /user/{param0}/{param1}/{param2}</code></a></li>
+  <li><a href="#userNinaJustinBieberHabitualPost"><code><span class="http-method">post</span> /user/{param0}/{param1}/{param2}</code></a></li>
+  <li><a href="#userNinaPassword1234Delete"><code><span class="http-method">delete</span> /user/{param0}/{param1}</code></a></li>
+  <li><a href="#userPost"><code><span class="http-method">post</span> /user</code></a></li>
+  </ul>
+
+  <h1><a name="Default">Default</a></h1>
+  <div class="method"><a name="musicGet"/>
+    <div class="method-path">
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /music</code></pre></div>
+    <div class="method-notes"></div>
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[
+      {
+      "id": 2,
+      "song_name": "Forever",
+      "artist": "Drake, Kanye West, Eminem",
+      "genre": "Pop",
+      "year": "2009",
+      "album": "More than a Game: Music"
+      },
+      {
+      "id": 5,
+      "song_name": "Sk8ter Boi",
+      "artist": "Avril Lavigne",
+      "genre": "Pop",
+      "year": "2002",
+      "album": "Let Go"
+      },
+      {
+      "id": 10,
+      "song_name": "Watermelon Sugar",
+      "artist": "Harry Styles",
+      "genre": "Pop",
+      "year": "2019",
+      "album": "Fine Line"
+      },
+      {
+      "id": 21,
+      "song_name": "Habitual",
+      "artist": "Justin Bieber",
+      "genre": "Pop",
+      "year": "2020",
+      "album": "Changes"
+      }
+]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="musicJustinBieberLonelyDelete"/>
+    <div class="method-path">
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /music/{param0}/{param1}</code></pre></div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+      <!-- field-items -->
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">param0 (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'artist' </div><div class="param">param1 (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'song_names' </div>
+    </div> 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+        "message": "Single song was deleted successfully!"  
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="musicParam0Param1Get"/>
+    <div class="method-path">
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /music/artist/{param0}</code></pre></div>
+    <div class="method-notes"></div>
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">param0 (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'artist' </div>
+    </div> 
+      <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>"
+[
+    {
+        "id": 22,
+        "song_name": "Numb",
+        "artist": "Linkin Park",
+        "genre": "Rock",
+        "year": "2003",
+        "album": "Meteora"
+    },
+    {
+        "id": 23,
+        "song_name": "Faint",
+        "artist": "Linkin Park",
+        "genre": "Rock",
+        "year": "2003",
+        "album": "Meteora"
+    }
+]
+"</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="musicPost"/>
+    <div class="method-path">
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /music</code></pre></div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <pre class="example"><code>{
+      "artist" : "artist",
+      "year" : "year",
+      "album" : "album",
+      "genre" : "genre",
+      "song_name" : "song_name",
+      "id" : 0
+}</code></pre>
+    <div class="field-items">
+
+    </div>  <!-- field-items -->
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+    "artist" : "Justin Bieber",
+    "year" : "2020",
+    "album" : "Changes",
+    "genre" : "Pop",
+    "song_name" : "Habitual"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="musicSongJustinBieberForeverPut"/>
+    <div class="method-path">
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /music/song/{param0}/{param1}</code></pre></div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">param0 (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'artist' </div><div class="param">param1 (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'song_names' </div>
+    </div> 
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <pre class="example"><code>{
+      "artist" : "artist",
+      "year" : "year",
+      "album" : "album",
+      "genre" : "genre",
+      "song_name" : "song_name"
+}</code></pre>
+    </div>  <!-- field-items -->
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+    "artist" : "Justin Bieber",
+    "year" : "2020",
+    "album" : "Changes",
+    "genre" : "Pop",
+    "song_name" : "Forever"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="musicSongJustinBieberHabitualGet"/>
+    <div class="method-path">
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /music/song/{param0}/{param1}</code></pre></div>
+    <div class="method-notes"></div>
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">param0 (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'artist' </div><div class="param">param1 (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'song_names' </div>
+    </div> 
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "artist" : "Justin Bieber",
+  "year" : "2020",
+  "album" : "Changes",
+  "genre" : "Pop",
+  "song_name" : "Habitual",
+  "id" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="userNinaGet"/>
+    <div class="method-path">
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /user/{param0}</code></pre></div>
+    <div class="method-notes"></div>
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">param0 (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'user_name' </div>
+    </div> 
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    
+    <div class="example-data-content-type">Content-Type: application/json</div>
+      <pre class="example"><code>[
+    {
+        "artist" : "Justin Bieber",
+        "year" : "2020",
+        "album" : "Changes",
+        "genre" : "Pop",
+        "song_name" : "Habitual",
+        "id" : 0
+    }
+]</code></pre>
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="userNinaJustinBieberHabitualDelete"/>
+    <div class="method-path">
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /user/{param0}/{param1}/{param2}</code></pre></div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">param0 (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'user_name' </div>
+      <div class="param">param1 (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'artist' </div>
+      <div class="param">param2 (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'song_name' </div>
+    </div>  <!-- field-items -->
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+    <h3 class="field-label">Example data</h3>
+    
+    <div class="example-data-content-type">Content-Type: application/json</div>
+      <pre class="example"><code>{
+      "message": "Favourite has been deleted successfully."
+}
+</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+    
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">500</h4>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="userNinaJustinBieberHabitualPost"/>
+    <div class="method-path">
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /user/{param0}/{param1}/{param2}</code></pre></div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+<h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">param0 (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'user_name' </div>
+      <div class="param">param1 (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'artist' </div>
+      <div class="param">param2 (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'song_name' </div>
+    </div> 
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "music_entries_id" : 6,
+  "user_id" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="userNinaPassword1234Delete"/>
+    <div class="method-path">
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /user/{param0}/{param1}</code></pre></div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">param0 (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'user_name' </div>
+      <div class="param">param1 (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Example values form path are: 'password' </div>
+    </div> 
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+    "Deleted": "Mike"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="userPost"/>
+    <div class="method-path">
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /user</code></pre></div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <pre class="example"><code>{
+      "password" : "password",
+      "user_name" : "user_name",
+}</code></pre>
+      
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "password" : "1234",
+  "user_name" : "hello",
+  "id" : 1
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+  </div> <!-- method -->
+  <hr/>
+
+  </body>
+</html>

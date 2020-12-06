@@ -129,52 +129,7 @@ User.delete = (user_name, artist, song_name, result) => {
         result({message: "Favourite has been deleted successfully."}, null);  
     })
 }
-/**
-//delete
-User.delete = (user_name, artist, song_name, result) => {
-    //get user id, get song + artist id, delete from favourites when first and second id match
-    sql.query(`SELECT id FROM user WHERE user.user_name LIKE '${user_name}'`, (err, idRes) => {
-        if (err) {
-            console.log("error: ", err);
-            result(null, err);
-            return;
-        }
-        if (idRes.length) {
-            console.log("found id: ", idRes);
-        }
-        else {
-            console.log("idRes has no length, error: ", err);
-            result(null, err);   
-            return;
-        }
-        console.log(idRes);
-        sql.query(`SELECT id FROM music_entries WHERE artist = '${artist}' AND song_name = '${song_name}'`, (err, songIdRes) => { //gets song + artist id
-            if (err) {
-                console.log("error: ", err);
-                result(null, err);
-                return;
-            }
-            if (songIdRes.length == 0) {
-                result({ kind: "not_found" }, null);
-                return;
-            }
-            console.log(`DELETE FROM favourites WHERE user_id = ${idRes[0].id} AND music_entries_id = ${songIdRes[0].id}`);
-            sql.query(`DELETE FROM favourites WHERE user_id = ${idRes[0].id} AND music_entries_id = ${songIdRes[0].id}`, (err, res) => {
-            if (err) {
-                console.log("error: ", err);
-                result(null, err);
-                return;
-            }
-            
-            console.log("deleted song with artist name: ", artist);
-            console.log("deleted song: ", song_name);
-            console.log(res[0]);
-            result({message: "Favourite has been deleted successfully."}, null);  
-            });
-        });
-    });
-};
-*/
+
 //deletes a user
 User.deleteUser = (user_name, password, result) => {
     //select user id using username and password, delete them from favourites, delete them from user

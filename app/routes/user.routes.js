@@ -3,7 +3,7 @@ module.exports = app => {
 
 //WORKS:
     //8. Create a new User
-    app.post("/user", user.create);
+    app.post("/user", user.create);   
 
     //9. Post a new favorite
     app.post("/user/:user_name/:artist/:song_name", user.addFavourite);

@@ -145,27 +145,6 @@ Music.removeSong = (artist, song_name, result) => {
   });
 };
 
-//removeArtist
-Music.removeArtist = (artist, result) => {
-	//sql.query(`DELETE FROM music_entries WHERE artist = '${artist}'`, (err, res) => {
-    sql.query(`CALL delete_all_by_artist('${artist}')`, (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-        return;
-      }
-
-      if (res.affectedRows == 0) {
-        // not found artist with the artist
-        result({ kind: "not_found" }, null);
-        return;
-      }
-
-      console.log("deleted all music with artist name: ", artist);
-      result(null, res);
-  });
-};
-
 module.exports = Music;
 /** old delete_all_by_artist
  * CREATE DEFINER=`admin`@`%` PROCEDURE `delete_all_by_artist`(artist1 VARCHAR(255))

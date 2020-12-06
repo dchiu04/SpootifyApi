@@ -159,20 +159,3 @@ exports.deleteSongByArtist = (req, res) => {
     } else res.send({ message: `Single song was deleted successfully!` });
   });
 };
-
-// Delete Music with the specified artist in the request
-exports.deleteAllByArtist = (req, res) => {
-  Music.removeArtist(req.params.artist, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found Music with id ${req.params.artist}.`
-        });
-      } else {
-        res.status(500).send({
-          message: "Could not delete Music with artist " + req.params.artist
-        });
-      }
-    } else res.send({ message: `All music by the artist was deleted successfully!` });
-  });
-};

@@ -12,9 +12,9 @@ module.exports = app => {
     app.get("/user/:user_name", user.getFavourites);
 
     //13. Delete a single favourite
-    app.delete("/user/:user_name/:artist/:song_name", user.delete);
+    app.delete("/user/:user_name/:artist/:song_name", user.delete); //no message on success(works) and crashes on fails
     
     // Deletes a user
-    //app.delete("/user/:user_name/:password", user.deleteUser);
+    app.delete("/user/:user_name/:password", user.deleteUser); //no message on fail and crashes
   };
   

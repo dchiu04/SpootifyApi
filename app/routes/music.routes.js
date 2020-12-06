@@ -47,8 +47,7 @@ const upload = multer({
 	app.get("/music/song/:artist/:song_name", music.findSongByArtist);
 	
 	//8. Delete a Music entry with artist and song name
-	app.delete("/music/:artist/:song_name", music.deleteSongByArtist);
-
+	app.delete("/music/:artist/:song_name", music.deleteSongByArtist); //messsage is incorrect, always says successful
 
 //IN PROGRESS (taking the L on image upload + token):
 	//2. Create a new album cover

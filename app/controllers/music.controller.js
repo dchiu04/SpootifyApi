@@ -25,7 +25,7 @@ exports.create = (req, res) => {
         message:
           err.message || "Some error occurred while creating the Music."
       });
-    else res.send(data);
+      else res.status(200).send(data);
   });
 }
 
@@ -57,7 +57,7 @@ exports.findAll = (req, res) => {
         message:
           err.message || "Some error occurred while retrieving music."
       });
-    else res.send(data);
+    else res.send("asd", data);
   });
 };
 

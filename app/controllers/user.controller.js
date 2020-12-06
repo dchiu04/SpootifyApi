@@ -22,7 +22,7 @@ exports.create = (req, res) => {
         message:
           err.message || "Some error occurred while creating the User."
       });
-    else res.send(data);
+    else res.status(200).send(data);
   });
 }
 
@@ -44,13 +44,13 @@ exports.getFavourites = (req, res) => {
       if (err)
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found any favourites for user: ${req.params.user_name}.`
+            message: `Cannot find any favourites for user: ${req.params.user_name}.`
           });
-        } else if(err.kind == "error_occurred") {
+        } else {
           res.status(500).send({
-            message:  err.message || "Some error occurred while getting favourites."
+            message: `Error retrieving favourites for user: ${req.params.user_name}`
           });
-        } else res.send(data);
+      } else res.send(data);
     });
 };
 
@@ -70,7 +70,12 @@ exports.delete = (req, res) => {
 exports.deleteUser = (req, res) => {
   User.deleteUser(req.params.user_name, req.params.password, (err, data) => {
     if (err)
-      res.status(500).send({
+      if (err.kind == "null") {
+        res.status(404).send({
+          message: err.message || "User could not be deleted. Please recheck your credentials."
+        })
+      }
+      else res.status(500).send({
         message:
           err.message || "Some error occurred while deleting user."
       });

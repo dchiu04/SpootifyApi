@@ -14,7 +14,7 @@ const Music = function(music) {
 //create
 Music.create = (newMusic, result) => {
   sql.query("INSERT INTO music_entries SET ?", newMusic, (err, res) => {
-   // sql.query(`INSERT IGNORE INTO music_entries VALUES(${newMusic.id},${newMusic.song_name},${newMusic.artist},${newMusic.genre},${newMusic.year},${newMusic.album})`,(err, res) => {
+  //sql.query(`INSERT IGNORE INTO music_entries VALUES('${newMusic.song_name}','${newMusic.artist}','${newMusic.genre}','${newMusic.year}','${newMusic.album}')`,(err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -127,7 +127,7 @@ Music.update = (artist, song_name, m, result) => {
 
 //removeSong
 Music.removeSong = (artist, song_name, result) => {
-  sql.query(`DELETE FROM music_entries WHERE artist = '${artist}' AND song_name = '${song_name}'`, (err, res) => {
+  sql.query(`CALL delete_song_by_artist_song_name('${artist}', '${song_name}')`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -140,43 +140,38 @@ Music.removeSong = (artist, song_name, result) => {
     }
 
     console.log("deleted song with artist name: ", artist);
-	console.log("deleted song: ", song_name);
+	  console.log("deleted song: ", song_name);
     result(null, res);
   });
 };
 
 //removeArtist
 Music.removeArtist = (artist, result) => {
-	sql.query(`DELETE FROM music_entries WHERE artist = '${artist}'`, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
+	//sql.query(`DELETE FROM music_entries WHERE artist = '${artist}'`, (err, res) => {
+    sql.query(`CALL delete_all_by_artist('${artist}')`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
 
-    if (res.affectedRows == 0) {
-      // not found artist with the artist
-      result({ kind: "not_found" }, null);
-      return;
-    }
+      if (res.affectedRows == 0) {
+        // not found artist with the artist
+        result({ kind: "not_found" }, null);
+        return;
+      }
 
-    console.log("deleted all music with artist name: ", artist);
-    result(null, res);
-  });
-	
-};
-
-Music.removeAll = result => {
-  sql.query("DELETE FROM music_entries", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log(`deleted ${res.affectedRows} music`);
-    result(null, res);
+      console.log("deleted all music with artist name: ", artist);
+      result(null, res);
   });
 };
 
 module.exports = Music;
+/** old delete_all_by_artist
+ * CREATE DEFINER=`admin`@`%` PROCEDURE `delete_all_by_artist`(artist1 VARCHAR(255))
+BEGIN
+	SELECT @song_id := id FROM music_entries WHERE artist = artist1;
+    DELETE FROM favourites WHERE music_entries_id = @song_id;
+    DELETE FROM music_entries WHERE id = @song_id;
+END
+ */

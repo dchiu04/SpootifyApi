@@ -43,16 +43,14 @@ const upload = multer({
 	//6. Retrieve all Music by artist
 	app.get("/music/artist/:artist", music.findAllByArtist);
 	
-	//7. Retrieves song with the same song name and artist
+	//7. Retrieves song by song name and artist
 	app.get("/music/song/:artist/:song_name", music.findSongByArtist);
 	
 	//8. Delete a Music entry with artist and song name
 	app.delete("/music/:artist/:song_name", music.deleteSongByArtist);
 
-	//9. Delete all Music by artist
-	app.delete("/music/:artist", music.deleteAllByArtist);
 
-//IN PROGRESS:
+//IN PROGRESS (taking the L on image upload + token):
 	//2. Create a new album cover
 	app.post("/music/album", function(req, res) {
 		upload(req, res, function(err) {

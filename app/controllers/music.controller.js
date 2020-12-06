@@ -169,21 +169,9 @@ exports.deleteAllByArtist = (req, res) => {
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Music with artist " + req.params.artist + " and song name " + req.params.song_name
+          message: "Could not delete Music with artist " + req.params.artist
         });
       }
     } else res.send({ message: `All music by the artist was deleted successfully!` });
   });
 };
-
-// Delete all Musics from the database.
-// exports.deleteAll = (req, res) => {
-//   Music.removeAll((err, data) => {
-//     if (err)
-//       res.status(500).send({
-//         message:
-//           err.message || "Some error occurred while removing all Musics."
-//       });
-//     else res.send({ message: `All Musics were deleted successfully!` });
-//   });
-// };

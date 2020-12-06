@@ -26,9 +26,9 @@ exports.create = (req, res) => {
   });
 }
 
-// Retrieve all Musics from the database.
-exports.addFavorite = (req, res) => {
-    User.addFavourite((err, data) => {
+// Adds a favourite Music to the user's favourite list stored on the database.
+exports.addFavourite = (req, res) => {
+    User.addFavourite(req.params.user_name, req.params.artist, req.params.song_name, (err, data) => {
       if (err)
         res.status(500).send({
           message:
@@ -36,5 +36,44 @@ exports.addFavorite = (req, res) => {
         });
       else res.send(data);
     });
-  };
+};
 
+  // Retrieve all of the user's favourite Musics from the database.
+exports.getFavourites = (req, res) => {
+    User.getFavourites(req.params.user_name, (err, data) => {
+      if (err)
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found any favourites for user: ${req.params.user_name}.`
+          });
+        } else if(err.kind == "error_occurred") {
+          res.status(500).send({
+            message:  err.message || "Some error occurred while getting favourites."
+          });
+        } else res.send(data);
+    });
+};
+
+// Delete a favourite Music from the user's favourite list
+exports.delete = (req, res) => {
+    User.delete(req.params.user_name, req.params.artist, req.params.song_name, (err, data) => {
+      if (err)
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while deleting favourite."
+        });
+      else res.send(data);
+    });
+};
+
+// Deletes a user when given their username and password
+exports.deleteUser = (req, res) => {
+  User.deleteUser(req.params.user_name, req.params.password, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while deleting user."
+      });
+    else res.send(data);
+  });
+};

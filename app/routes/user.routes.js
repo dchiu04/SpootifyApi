@@ -5,11 +5,16 @@ module.exports = app => {
     //10. Create a new User
     app.post("/user", user.create);
 
-//IN PROGRESS:
     //11. Post a new favorite
-    //app.post("/user/:artist/:song_name", user.addFavorite);
+    app.post("/user/:user_name/:artist/:song_name", user.addFavourite);
 
-    //12. Delete a single favourite
-	//app.delete("/user/:song_name", user.delete);
+    //12. Gets a user's favourites
+    app.get("/user/:user_name", user.getFavourites);
+
+    //13. Delete a single favourite
+    app.delete("/user/:user_name/:artist/:song_name", user.delete);
+    
+    // Deletes a user
+    //app.delete("/user/:user_name/:password", user.deleteUser);
   };
   

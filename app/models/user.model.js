@@ -110,7 +110,26 @@ User.getFavourites = (user_name, result) => {
     });
 };
 
-
+User.delete = (user_name, artist, song_name, result) => {
+    sql.query(`CALL delete_song_from_favourite('${user_name}', '${artist}', '${song_name}')`, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+        console.log("idRes: ", res[0]);
+        if (res[0].length == 0) {
+           // console.log("found id: ", idRes);
+            result({message: "Couldn't find song"}, null);
+            return;
+        }
+        console.log("deleted song with artist name: ", artist);
+        console.log("deleted song: ", song_name);
+        console.log(res[0]);
+        result({message: "Favourite has been deleted successfully."}, null);  
+    })
+}
+/**
 //delete
 User.delete = (user_name, artist, song_name, result) => {
     //get user id, get song + artist id, delete from favourites when first and second id match
@@ -135,29 +154,27 @@ User.delete = (user_name, artist, song_name, result) => {
                 result(null, err);
                 return;
             }
-            if (idRes.length) {
-                console.log("found id from song: ", songIdRes[0].id);
+            if (songIdRes.length == 0) {
+                result({ kind: "not_found" }, null);
+                return;
             }
-            console.log(songIdRes); //user_id, music_entries_id
-            sql.query(`DELETE FROM favourites WHERE user_id = '${idRes[0].id}' AND music_entries_id = '${songIdRes[0].id}'`, (err, res) => {
+            console.log(`DELETE FROM favourites WHERE user_id = ${idRes[0].id} AND music_entries_id = ${songIdRes[0].id}`);
+            sql.query(`DELETE FROM favourites WHERE user_id = ${idRes[0].id} AND music_entries_id = ${songIdRes[0].id}`, (err, res) => {
             if (err) {
                 console.log("error: ", err);
                 result(null, err);
                 return;
             }
-            if (res.affectedRows == 0) {
-                result({ kind: "not_found" }, null);
-                return;
-            }
+            
             console.log("deleted song with artist name: ", artist);
             console.log("deleted song: ", song_name);
             console.log(res[0]);
-            result(null, res[0]);
+            result({message: "Favourite has been deleted successfully."}, null);  
             });
         });
     });
 };
-
+*/
 //deletes a user
 User.deleteUser = (user_name, password, result) => {
     //select user id using username and password, delete them from favourites, delete them from user
@@ -172,7 +189,7 @@ User.deleteUser = (user_name, password, result) => {
         }
         else {
             console.log("idRes has no length, error: ", err);
-            result(null, err);   
+            result({message: "Could not find user id"}, err);   
             return;
         }
         sql.query(`DELETE FROM favourites WHERE user_id = '${idRes[0].id}'`, (err, favRes) => { //gets song + artist id
@@ -190,6 +207,7 @@ User.deleteUser = (user_name, password, result) => {
                 result(null, err);
                 return;
             }
+            console.log("res affect:", res.affectedRows);
             if (res.affectedRows == 0) {
                 result({ kind: "not_found" }, null);
                 return;

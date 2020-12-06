@@ -104,8 +104,7 @@ Music.getAll = result => {
 
 //Update
 Music.update = (artist, song_name, m, result) => {
-  sql.query(
-    `UPDATE music_entries SET artist = ?, song_name = ?, genre = ?, album = ?, year = ? WHERE artist = '${artist}' AND song_name = '${song_name}'`,
+  sql.query(`UPDATE music_entries SET artist = ?, song_name = ?, genre = ?, album = ?, year = ? WHERE artist = '${artist}' AND song_name = '${song_name}'`,
     [m.artist, m.song_name, m.genre, m.album, m.year],
     (err, res) => {
       if (err) {
@@ -124,21 +123,72 @@ Music.update = (artist, song_name, m, result) => {
     }
   );
 };
+/**
+ * 
+   {SELECT @song_id := id FROM music_entries WHERE artist = artist1 AND song_name = song_name1;
+    DELETE FROM favourites WHERE music_entries_id = @song_id;
+    DELETE FROM music_entries WHERE id = @song_id;} artist 
+ */
 
+// Music.removeSong = (artist, song_name, result) => {
+//     //get user id, get song + artist id, delete from favourites when first and second id match
+//     sql.query(`SELECT id FROM music_entries WHERE artist = '${artist}' AND song_name = '${song_name}'`, (err, idRes) => {
+//       if (err) {
+//           console.log("error: ", err);
+//           result(null, err);
+//           return;
+//       }
+//       if (idRes.length) {
+//           console.log("found id: ", idRes);
+//       }
+//       else {
+//           console.log("idRes has no length in remove song, error: ", err);
+//           result(null, err);   
+//           return;
+//       }
+//       sql.query(`DELETE FROM favourites WHERE music_entries_id = ${idRes[0].id}`, (err, favRes) => { //deletes all from favourites
+//           if (err) {
+//               console.log("error: ", err);
+//               result(null, err);
+//               return;
+//           }
+//           if (favRes.length) {
+//               console.log("deleted from favourites: ", favRes);
+//               console.log("deleted from favourites: ", favRes[0]);
+//           }
+//           sql.query(`DELETE FROM music_entries WHERE id = '${idRes[0].id}'`, (err, res) => {
+//           if (err) {
+//               console.log("error: ", err);
+//               result(null, err);
+//               return;
+//           }
+//           if (res.affectedRows == 0) {
+//               result({ kind: "not_found" }, null);
+//               return;
+//           }
+//           console.log("deleted song with artist name: ", artist);
+//           console.log("deleted song: ", song_name);
+//           console.log(res[0]);
+//           result(null, res[0]);
+//           });
+//       });
+//   });
+// }
 //removeSong
 Music.removeSong = (artist, song_name, result) => {
   sql.query(`CALL delete_song_by_artist_song_name('${artist}', '${song_name}')`, (err, res) => {
+    console.log("res:",res[0]);
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    if (res.affectedRows == 0) {
+    if (res[0].length == 0) {
+      console.log("it didnt get deleted...");
       result({ kind: "not_found" }, null);
       return;
-    }
-
+    } 
     console.log("deleted song with artist name: ", artist);
 	  console.log("deleted song: ", song_name);
     result(null, res);

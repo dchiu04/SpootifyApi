@@ -146,7 +146,13 @@ exports.update = (req, res) => {
 // Delete a single song with the specified artist and song anme in the request
 exports.deleteSongByArtist = (req, res) => {
   Music.removeSong(req.params.artist, req.params.song_name, (err, data) => {
+    console.log("err insdie fnc:", err);
     if (err) {
+      if (err == "null") {
+          res.status(404).send({
+          message: err.message || "Music could not be deleted. Please double check the artist and song name"
+        })
+      }
       if (err.kind === "not_found") {
         res.status(404).send({
           message: `Not found Music with id ${req.params.artist}.`
